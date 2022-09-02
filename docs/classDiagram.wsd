@@ -2,7 +2,7 @@
 
 
  
-class Main{
+class App{
     +{static}main(String args)
 }
 
@@ -95,6 +95,6 @@ package util{
 }
 
 
-Main ..> OperationPresenter
+App ..> OperationPresenter
 
 @enduml

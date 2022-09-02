@@ -1,5 +1,7 @@
 package com.telus.dsu.introgit;
 
+import com.telus.dsu.introgit.calculator.presenter.OperationPresenter;
+
 /**
  * Hello world!
  *
@@ -8,6 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        new OperationPresenter().doMenu();
+
     }
 }
