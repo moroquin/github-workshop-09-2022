@@ -1,0 +1,100 @@
+@startuml handsOnMVC
+
+
+ 
+class Main{
+    +{static}main(String args)
+}
+
+package calculator{
+
+    package presenter{
+
+        class OperationPresenter{
+            +executeOperation()
+            +doMenu()
+            +listOperations()
+        }
+
+        abstract OperationRunneable{
+            -OperationController operationController
+            +obtainData()
+            +executeOperation()
+            +presentResult()
+        }
+
+        class SumPresenter{
+
+        }
+
+        class MultPresenter{
+
+        }
+
+        SumPresenter -up-|> OperationRunneable
+        MultPresenter -up-|> OperationRunneable
+        OperationPresenter ..> OperationRunneable
+
+    }
+
+    package controller{
+        
+        class ListOperationsController{
+
+        }
+
+        abstract OperationController{
+            
+        }
+
+        class SumController{
+
+        }
+
+        class MultController{
+
+        }
+
+        class OperationFactory{
+            +Sum
+            +Mult
+        }
+
+        SumController -up-|> OperationController
+        MultController -up-|> OperationController
+
+        OperationFactory ..> OperationController
+    }
+
+    package model{
+
+        class OperationHistory{
+            -{static}List<String> history
+            -{static}push(String operation)
+            -{static}getOperations():List<String>
+        }
+
+    }
+
+
+
+
+    OperationRunneable o-- OperationController
+    OperationPresenter ..> OperationFactory
+
+    OperationController ..> OperationHistory
+    ListOperationsController ..> OperationHistory
+    OperationPresenter ..> ListOperationsController
+    
+}
+
+package util{
+    class Console{
+        
+    }
+}
+
+
+Main ..> OperationPresenter
+
+@enduml
