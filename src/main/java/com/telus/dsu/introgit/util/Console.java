@@ -42,8 +42,9 @@ public class Console {
     
 
     public static void waitForEnter(){
-        scanner.next();
-        scanner.next();
+        scanner.nextLine();
+        scanner.nextLine();
+        
     }
 
 
